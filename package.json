@@ -1,0 +1,21 @@
+{
+    "name": "fc",
+    "version": "0.0.1-alpha.2",
+    "contributors": [
+        {
+            "name": "Leo Wang",
+            "email": "wangkemiao@baidu.com"
+        }
+    ],
+    "dependencies": {
+        "er": "~3.1.0-alpha.8",
+        "ef": "~3.1.0-alpha.3",
+        "echarts": "~2.0.0",
+        "fcui": "~0.0.1-alpha.1",
+        "fclib": "~0.0.1-alpha.1"
+    },
+    "main": "main",
+    "description": "fc是凤巢业务端的公共层级package。",
+    "homepage": "https://gitlab.com/fc-fe/fc",
+    "repository": "git://gitlab.com/fc-fe/fc"
+}
