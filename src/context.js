@@ -10,7 +10,6 @@ define(function (require) {
     var util = require('./util');
     require('er');
     require('esui');
-    require('echarts');
     var ajax = require('./ajax');
     var systemTimer = require('./context/systemTimer');
 
