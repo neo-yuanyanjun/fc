@@ -28,7 +28,7 @@ function AjaxHook() {
      *
      * 任意ajax执行之前调用
      *
-     * @param {meta.AjaxOption} option 请求参数
+     * @param {meta.AjaxOption} option 当前执行请求的参数
      */
     this.beforeEachRequest;
 
@@ -37,7 +37,7 @@ function AjaxHook() {
      *
      * 在任意ajax经过数据分析后认为是失败后调用
      *
-     * @param {meta.AjaxOption} option 请求参数
+     * @param {meta.AjaxOption} option 当前执行请求的参数
      */
     this.afterEachRequest;
 
@@ -46,7 +46,7 @@ function AjaxHook() {
      *
      * 在任意ajax经过数据分析后认为是成功后调用
      *
-     * @param {AjaxQueueItem} current 当前执行的请求
+     * @param {meta.AjaxOption} option 当前执行请求的参数
      * @param {Mixed} data 经处理后的数据
      */
     this.eachSuccess;
@@ -56,7 +56,7 @@ function AjaxHook() {
      *
      * 在任意ajax经过数据分析后认为是失败后调用
      *
-     * @param {AjaxQueueItem} current 当前执行的请求
+     * @param {meta.AjaxOption} option 当前执行请求的参数
      * @param {meta.AjaxFailData} data 失败相关的数据
      */
     this.eachFailure;

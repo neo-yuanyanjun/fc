@@ -89,4 +89,17 @@ function AjaxOption() {
      * 根据现有标准，唯一有用的属性是`withCrentials`
      */
     this.xhrFields;
+
+    /**
+     * @property {Function} [done]
+     * 在异步并发模式下可以使用这种方式传递请求状态转为`成功`时的处理
+     */
+    this.done;
+
+    /**
+     * @property {Function} [fail]
+     * 在异步并发模式下可以使用这种方式传递请求状态转为`失败`时的处理
+     */
+    this.fail;
+
 }

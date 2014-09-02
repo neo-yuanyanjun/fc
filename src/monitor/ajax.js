@@ -99,19 +99,19 @@ define(function (require) {
                 });
                 sessionStack.push(logData);
             };
-            ajax.hooks.eachSuccess = function (request, data) {
+            ajax.hooks.eachSuccess = function (option, data) {
                 reqStack.succ.push({
-                    reqId: getReqId(request.option.url),
-                    eventId: request.option.data.eventId,
-                    option: encodeData(request.option),
+                    reqId: getReqId(option.url),
+                    eventId: option.data.eventId,
+                    option: encodeData(option),
                     data: encodeData(data)
                 });
             };
-            ajax.hooks.eachFailure = function (request, data) {
+            ajax.hooks.eachFailure = function (option, data) {
                 reqStack.fail.push({
-                    reqId: getReqId(request.option.url),
-                    eventId: request.option.data.eventId,
-                    option: encodeData(request.option),
+                    reqId: getReqId(option.url),
+                    eventId: option.data.eventId,
+                    option: encodeData(option),
                     data: encodeData(data)
                 });
             };

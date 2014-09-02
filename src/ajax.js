@@ -36,7 +36,7 @@ define(function (require) {
     var _ = require('underscore');
     var eoo = require('eoo');
     var EventTarget = require('mini-event/EventTarget');
-    var AjaxSession = require('./AjaxSession');
+    var AjaxSession = require('./ajax/AjaxSession');
 
     var noop = function () {};
 
@@ -78,6 +78,7 @@ define(function (require) {
     /**
      * 发送请求，每次ajax.request执行都触发一个新的AjaxSession
      * 返回的是AjaxSession的实例
+     * 与session不同的是，这个会自动执行请求，session必须手动执行start
      *
      * @param {meta.ajaxOption} ajaxOption 请求的参数
      * @return {AjaxSession}
@@ -86,13 +87,19 @@ define(function (require) {
         try {
             var session = this.session(ajaxOption);
             session.start();
-            return session.current;
+            return session;
+
         }
         catch (e) {
             this.fire('error', {
                 error: e
             });
         }
+    };
+
+    // 利用er.ajax的hook来绑定Hook：ajax.hooks.beforeEachRequest
+    require('er/ajax').hooks.beforeExecute = function (option) {
+        instance.hooks.beforeEachRequest(option);
     };
 
     /**
@@ -114,13 +121,13 @@ define(function (require) {
                 me.hooks.beforeEachSession(e.session);
             });
             session.on('requestdone', function (e) {
-                me.hooks.eachSuccess(e.request, e.data)
+                me.hooks.eachSuccess(e.option, e.data)
             });
             session.on('requestfail', function (e) {
-                me.hooks.eachFailure(e.request, e.data);
+                me.hooks.eachFailure(e.option, e.data);
             });
             session.on('requestfinish', function (e) {
-                me.hooks.afterEachRequest(e.request.option);
+                me.hooks.afterEachRequest(e.option);
             });
             session.on('finish', function (e) {
                 me.hooks.afterEachSession(e.session);
@@ -135,25 +142,9 @@ define(function (require) {
         return session;
     };
 
-    /**
-     * 并行的多个请求
-     * @param {Array.<meta.ajaxOption>} options 请求的参数数组
-     * @return {Deferred}
-     */
-    proto.all = function (options) {
-        if (!_.isArray(options)){
-            return this.request(options);
-        }
-        
-    };
-
     var Ajax = eoo.create(EventTarget, proto);
     var instance = new Ajax();
     instance.Ajax = Ajax;
-
-    require('er/ajax').hooks.beforeExecute = function (option) {
-        instance.hooks.beforeEachRequest(option);
-    };
 
     return instance;
 });

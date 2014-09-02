@@ -37,12 +37,10 @@ define(function (require) {
             var envRequest = ajax.request({
                 path: 'GET/basicInfo',
                 simpleAjax: true
-            }).done(function (response) {
+            }).promise.done(function (response) {
                 require('./context/environment').initBasicInfo(response);
                 systemTimer.mark('basicInfo-finish');
-            });
-
-            envRequest.fail(function () {
+            }).fail(function () {
                 // unexpected failure, log it
             });
 
