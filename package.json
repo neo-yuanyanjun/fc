@@ -1,6 +1,6 @@
 {
     "name": "fc",
-    "version": "0.0.1-alpha.3",
+    "version": "0.1.0-alpha.1",
     "contributors": [
         {
             "name": "Leo Wang",
@@ -8,13 +8,15 @@
         }
     ],
     "dependencies": {
-        "er": "~3.1.0-alpha.8",
-        "ef": "~3.1.0-alpha.3",
-        "fcui": "~0.0.1-alpha.1",
-        "fclib": "~0.0.1-alpha.1"
+        "fcui": "0.0.1-alpha.1",
+        "fc-ajax": "0.0.1-alpha.1",
+        "fc-flag": "0.0.1-alpha.1",
+        "fc-monitor": "0.0.1-alpha.1",
+        "fc-storage": "0.0.1-alpha.1",
+        "fc-view": "0.0.1-alpha.1"
     },
     "main": "main",
-    "description": "fc是凤巢业务端的公共层级package。",
-    "homepage": "https://gitlab.com/fc-fe/fc",
-    "repository": "git://gitlab.com/fc-fe/fc"
+    "description": "fc是凤巢业务端的中间层",
+    "homepage": "https://github.com/fcfe/fc",
+    "repository": "git://github.com/fcfe/fc"
 }
