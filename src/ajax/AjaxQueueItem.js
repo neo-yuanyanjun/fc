@@ -195,7 +195,7 @@ define(function (require) {
             .replace(/&$/, '');
 
         option.url += (option.url.indexOf('?') > -1 ? '&' : '?')
-            + 'reqId=' + util.uid();
+            + 'reqId=' + util.guid();
         // ajax执行每次请求的url都不会携带参数`_=时间戳`
         option.cache = true;
 
